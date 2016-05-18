@@ -1,0 +1,64 @@
+/* 1. ----- LOGIN ----- */
+.session-error {
+    width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login {
+    width: 600px;
+    color: teal;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border: 1px double teal;
+    border-radius: 20px;
+}
+.login button {
+    background: teal;
+    color: white;
+    border: 0;
+    margin-left: 5px;
+}
+
+.login h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 2. ----- ABM ----- */
+
+/* HEADER */
+#sign-out {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+.navbar {
+    margin-top: 8px;
+    background-color: initial;
+}
+
+.abm-img {
+    width: 100px;
+    border: 2px solid gray;
+    margin: 5px;
+}
+
+/* MAIN */
+main {
+    min-height: 600px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid gray;
+}
+footer p {
+    text-align: center;
+}
