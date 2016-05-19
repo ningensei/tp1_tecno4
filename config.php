@@ -13,7 +13,7 @@ $db_dsn  = "mysql:host=" . $db_host . ";dbname=" . $db_base .";charset=utf8";
 
 // DSN => Driver Source Name
 try {
-	$db = new PDO($db_dsn, $db_user, $db_pass);
+    $db = new PDO($db_dsn, $db_user, $db_pass);
 } catch(Exception $e) {
-	echo "Error al conectar con la base de datos.";
+    echo "Error al conectar con la base de datos.";
 }
