@@ -1,4 +1,6 @@
 
+
+
 window.addEventListener('DOMContentLoaded', function() {
     
     /**
@@ -18,14 +20,8 @@ window.addEventListener('DOMContentLoaded', function() {
     /**
     * Chequea si el usuario existe en base de datos
     */
-    
     $('#login-form').addEventListener('submit', function(e) {
-        if (hasClass(e.target, 'login')) {
-            e.preventDefault();
-            console.log('aca');
-        }
-        
-        return;
+        e.preventDefault();
         ajax.request({
             'method': 'POST',
             'url': 'php/login.php',
@@ -42,7 +38,3 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     });
 }, false);
-
-function hasClass(elem, className) {
-    return elem.className.split(' ').indexOf(className) > -1;
-}
