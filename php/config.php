@@ -17,3 +17,6 @@ try {
 } catch(Exception $e) {
     echo "Error al conectar con la base de datos.";
 }
+
+// Iniciar Sesión
+session_start();

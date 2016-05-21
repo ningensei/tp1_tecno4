@@ -1,4 +1,3 @@
-
 /**
 * Guarda en un objeto las distintas vistas del ABM
 */
@@ -6,28 +5,40 @@
 var views = {
     'test': function() {
         var obj = {'codigo': 'prueba', 'servicios': 'prueba_2'};
-        this.replace_vars(this.table_rows, obj);
+        return this.replace_vars(this.table_rows, obj);
     },
 
+    /**
+    * Obtiene las {{variables}} de un string
+    * @return array
+    */
     'get_vars': function(str)
     {
         return str.match(/{{\w+}}/g);
     },
 
+    /**
+    * Reemplaza las {{variables}} de un string por las que se le pase en un objeto
+    * @return string
+    */
     'replace_vars': function(view, obj)
     {
+    	if(!view || !obj) { return false; }
+
         var vars = this.get_vars(view);
 
         for(var i in obj) {
             for(var j = 0; j < vars.length; j++) {
-
+            	// Quita los {{ }}
                 clean_var = vars[j].replace(vars[j], vars[j].match(/\w+/));
+                // reemplaza las {{var}} por el value correspondiente que se recibe en el objeto
                 if(clean_var == i) {
                     view = view.replace(vars[j], obj[i]);
                 }
             }
         }
-        console.log(view);
+
+        return view;
     },
 
     /**
@@ -36,12 +47,18 @@ var views = {
     */
     'render': function(view)
     {
-        return this.abm_header += this[view] += this.abm_footer;
+        if(!this[view]) {
+            return 'La vista no existe';
+        }
+        else {
+            return this.abm_header += this[view] += this.abm_footer;    
+        }
+        
     },
 
     'login': [
         '<p class="session-error alert alert-danger" style="display: none"></p>',
-        '<form class="login" id="login-form" action="login.php" method="get">',
+        '<form class="login" id="login-form" action="php/login.php" method="post">',
         '    <h2>Panel de Administración</h2>',
         '        Nombre <input type="text" id="user" name="user"/>',
         '        Contraseña <input type="password" id="password" name="password"/>',
@@ -79,7 +96,7 @@ var views = {
         '           <th>img_portada</th>',
         '       </thead>',
         '       <tbody>',
-        '       {{table_rows}}',
+        '           {{table_rows}}',
         '       </tbody>',
         '   </table>',
         '</main>'
@@ -106,4 +123,3 @@ var views = {
     ].join('')
     
 }
-
